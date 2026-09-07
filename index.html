@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SastaBajar - Online Shopping Deals</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:#f5f5f5;
+  color:#222;
+}
+
+header{
+  background:#ff6b00;
+  color:white;
+  text-align:center;
+  padding:20px;
+}
+
+header h1{
+  margin:0;
+  font-size:32px;
+}
+
+header p{
+  margin:8px 0;
+}
+
+#searchBox{
+  width:85%;
+  max-width:500px;
+  padding:12px;
+  border:none;
+  border-radius:25px;
+  font-size:16px;
+}
+
+.hero{
+  text-align:center;
+  padding:30px 15px;
+  background:white;
+}
+
+.categories{
+  text-align:center;
+  padding:15px;
+}
+
+.categories button{
+  padding:10px 15px;
+  margin:5px;
+  border:none;
+  border-radius:20px;
+  background:#ff6b00;
+  color:white;
+  cursor:pointer;
+}
+
+.products{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:20px;
+  padding:20px;
+}
+
+.product-card{
+  background:white;
+  width:250px;
+  padding:15px;
+  border-radius:12px;
+  text-align:center;
+  box-shadow:0 2px 10px rgba(0,0,0,0.15);
+}
+
+.product-card img{
+  width:100%;
+  border-radius:10px;
+}
+
+.price{
+  font-size:20px;
+  font-weight:bold;
+  color:#e63946;
+}
+
+.product-card a{
+  display:block;
+  background:#ff9900;
+  color:white;
+  text-decoration:none;
+  padding:12px;
+  border-radius:8px;
+  margin-top:10px;
+}
+
+footer{
+  background:#222;
+  color:white;
+  text-align:center;
+  padding:20px;
+  margin-top:20px;
+}
+</style>
+
+</head>
+
+<body>
+
+<header>
+<h1>🛍️ SastaBajar</h1>
+<p>Best Online Shopping Deals</p>
+
+<input type="text" id="searchBox" placeholder="🔍 Product खोजें...">
+</header>
+
+<section class="hero">
+<h2>🔥 सबसे बेहतरीन Deals एक जगह!</h2>
+<p>Amazon और Flipkart के शानदार Products और Offers देखें।</p>
+</section>
+
+<section class="categories">
+<button onclick="filterProducts('all')">सभी</button>
+<button onclick="filterProducts('electronics')">📱 Electronics</button>
+<button onclick="filterProducts('fashion')">👕 Fashion</button>
+<button onclick="filterProducts('home')">🏠 Home</button>
+</section>
+
+<main class="products">
+
+<div class="product-card" data-category="electronics">
+<img src="https://via.placeholder.com/300x200?text=Smartphone" alt="Smartphone">
+<h3>Latest Smartphone</h3>
+<p class="price">₹14,999</p>
+<a href="#">🛒 Amazon पर खरीदें</a>
+</div>
+
+<div class="product-card" data-category="electronics">
+<img src="https://via.placeholder.com/300x200?text=Earbuds" alt="Earbuds">
+<h3>Wireless Earbuds</h3>
+<p class="price">₹1,499</p>
+<a href="#">🛒 Amazon पर खरीदें</a>
+</div>
+
+<div class="product-card" data-category="fashion">
+<img src="https://via.placeholder.com/300x200?text=Fashion" alt="Fashion">
+<h3>Fashion Collection</h3>
+<p class="price">₹999 से शुरू</p>
+<a href="#">🛒 Flipkart पर खरीदें</a>
+</div>
+
+<div class="product-card" data-category="home">
+<img src="https://via.placeholder.com/300x200?text=Home+Kitchen" alt="Home">
+<h3>Home & Kitchen</h3>
+<p class="price">₹499 से शुरू</p>
+<a href="#">🛒 Product देखें</a>
+</div>
+
+</main>
+
+<footer>
+<h3>🛍️ SastaBajar</h3>
+<p>© 2026 SastaBajar | All Rights Reserved</p>
+</footer>
+
+<script>
+function filterProducts(category){
+  const products=document.querySelectorAll('.product-card');
+
+  products.forEach(product=>{
+    if(category==='all' || product.dataset.category===category){
+      product.style.display='block';
+    }else{
+      product.style.display='none';
+    }
+  });
+}
+
+document.getElementById('searchBox').addEventListener('keyup',function(){
+  let search=this.value.toLowerCase();
+
+  document.querySelectorAll('.product-card').forEach(product=>{
+    let text=product.innerText.toLowerCase();
+
+    product.style.display=text.includes(search)?'block':'none';
+  });
+});
+</script>
+
+</body>
+</html>
