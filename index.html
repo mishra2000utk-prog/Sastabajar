@@ -108,11 +108,6 @@ header{
   padding:25px 15px;
   text-align:center;
   box-shadow:0 5px 18px rgba(0,0,0,.10);
-  transition:.3s;
-}
-
-.store-card:hover{
-  transform:translateY(-5px);
 }
 
 .store-icon{
@@ -139,21 +134,10 @@ header{
   font-weight:bold;
 }
 
-.amazon{
-  background:#ff9900;
-}
-
-.flipkart{
-  background:#2874f0;
-}
-
-.myntra{
-  background:#e91e63;
-}
-
-.tatacliq{
-  background:#c2185b;
-}
+.amazon{ background:#ff9900; }
+.flipkart{ background:#2874f0; }
+.myntra{ background:#e91e63; }
+.tatacliq{ background:#c2185b; }
 
 .categories{
   max-width:1000px;
@@ -195,27 +179,39 @@ footer{
   padding:30px 15px;
 }
 
+footer p{
+  margin-top:10px;
+  color:#ccc;
+}
+
 @media(max-width:600px){
 
-.hero{
-  padding:50px 15px;
-}
+  header{
+    padding:15px;
+  }
 
-.hero h1{
-  font-size:28px;
-}
+  header div:last-child{
+    display:none;
+  }
 
-.search-box{
-  flex-direction:column;
-  background:transparent;
-  gap:10px;
-}
+  .hero{
+    padding:50px 15px;
+  }
 
-.search-box input,
-.search-box button{
-  width:100%;
-}
+  .hero h1{
+    font-size:28px;
+  }
 
+  .search-box{
+    flex-direction:column;
+    background:transparent;
+    gap:10px;
+  }
+
+  .search-box input,
+  .search-box button{
+    width:100%;
+  }
 }
 </style>
 </head>
@@ -223,8 +219,8 @@ footer{
 <body>
 
 <header>
-<div class="logo">🛍️ Sasta<span>Bazar</span></div>
-<div>🔍 Smart Shopping</div>
+  <div class="logo">🛍️ Sasta<span>Bazar</span></div>
+  <div>🔍 Smart Shopping</div>
 </header>
 
 <section class="hero">
@@ -239,6 +235,7 @@ footer{
 type="text"
 id="searchInput"
 placeholder="🔍 जैसे iPhone, Shoes, Laptop, Saree..."
+onkeydown="if(event.key==='Enter') searchProduct()"
 >
 
 <button onclick="searchProduct()">Search 🔍</button>
@@ -256,84 +253,59 @@ placeholder="🔍 जैसे iPhone, Shoes, Laptop, Saree..."
 
 <div class="results" id="results">
 
-
 <div class="store-card">
-
 <div class="store-icon">🟠</div>
-
 <h3>Amazon</h3>
-
 <p id="amazonText">Amazon पर खोजें</p>
 
-<a
-id="amazonLink"
+<a id="amazonLink"
 class="store-btn amazon"
 href="#"
-target="_blank"
->
+target="_blank">
 Amazon पर देखें
 </a>
-
 </div>
 
 
 <div class="store-card">
-
 <div class="store-icon">🔵</div>
-
 <h3>Flipkart</h3>
-
 <p id="flipkartText">Flipkart पर खोजें</p>
 
-<a
-id="flipkartLink"
+<a id="flipkartLink"
 class="store-btn flipkart"
 href="#"
-target="_blank"
->
+target="_blank">
 Flipkart पर देखें
 </a>
-
 </div>
 
 
 <div class="store-card">
-
 <div class="store-icon">👕</div>
-
 <h3>Myntra</h3>
-
 <p id="myntraText">Myntra पर खोजें</p>
 
-<a
-id="myntraLink"
+<a id="myntraLink"
 class="store-btn myntra"
 href="#"
-target="_blank"
->
+target="_blank">
 Myntra पर देखें
 </a>
-
 </div>
 
 
 <div class="store-card">
-
 <div class="store-icon">✨</div>
-
 <h3>Tata CLiQ</h3>
-
 <p id="tataText">Tata CLiQ पर खोजें</p>
 
-<a
-id="tataLink"
+<a id="tataLink"
 class="store-btn tatacliq"
 href="#"
-target="_blank"
->
+target="_blank">
 Tata CLiQ पर देखें
 </a>
-
 </div>
 
 </div>
@@ -383,37 +355,80 @@ Tata CLiQ पर देखें
 
 function searchProduct(){
 
-let product=document
-.getElementById("searchInput")
-.value
-.trim();
+  let product = document
+  .getElementById("searchInput")
+  .value
+  .trim();
 
-if(product===""){
-alert("कृपया कोई सामान लिखें 🔍");
-return;
-}
+  if(product === ""){
+    alert("कृपया कोई सामान लिखें 🔍");
+    return;
+  }
 
-showResults(product);
-
+  showResults(product);
 }
 
 
 function quickSearch(product){
 
-document.getElementById("searchInput").value=product;
+  document.getElementById("searchInput").value = product;
 
-showResults(product);
-
+  showResults(product);
 }
 
 
 function showResults(product){
 
-let query=encodeURIComponent(product);
+  let query = encodeURIComponent(product);
+
+  /* Amazon */
+
+  document.getElementById("amazonLink").href =
+  "https://www.amazon.in/s?k=" + query;
+
+  document.getElementById("amazonText").innerText =
+  product + " Amazon पर खोजें";
 
 
-/* Amazon Search */
+  /* Flipkart */
 
-document
-.getElementById("amazonLink")
-.href="https://www
+  document.getElementById("flipkartLink").href =
+  "https://www.flipkart.com/search?q=" + query;
+
+  document.getElementById("flipkartText").innerText =
+  product + " Flipkart पर खोजें";
+
+
+  /* Myntra */
+
+  document.getElementById("myntraLink").href =
+  "https://www.myntra.com/" + query;
+
+  document.getElementById("myntraText").innerText =
+  product + " Myntra पर खोजें";
+
+
+  /* Tata CLiQ */
+
+  document.getElementById("tataLink").href =
+  "https://www.tatacliq.com/search/?searchCategory=all&text=" + query;
+
+  document.getElementById("tataText").innerText =
+  product + " Tata CLiQ पर खोजें";
+
+
+  document.getElementById("resultTitle").innerHTML =
+  "🔎 <b>" + product + "</b> कहाँ खरीदें?";
+
+  document.getElementById("results").style.display = "grid";
+
+  document.getElementById("results").scrollIntoView({
+    behavior:"smooth"
+  });
+
+}
+
+</script>
+
+</body>
+</html>
