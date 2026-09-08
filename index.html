@@ -4,615 +4,464 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>SastaBajar - Best Shopping Deals</title>
+<title>SastaBazar - Best Deals & Smart Shopping</title>
 
 <style>
 *{
   box-sizing:border-box;
+  margin:0;
+  padding:0;
 }
 
 body{
-  margin:0;
   font-family:Arial, sans-serif;
-  background:#f4f6f8;
-  color:#222;
+  background:#f6f7fb;
+  color:#1d1d1f;
 }
 
 /* HEADER */
-
 header{
-  background:linear-gradient(135deg,#ff6b00,#ff9500);
+  background:#151515;
   color:white;
-  text-align:center;
-  padding:25px 15px 30px;
+  padding:15px 6%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  position:sticky;
+  top:0;
+  z-index:100;
 }
 
 .logo{
-  font-size:34px;
+  font-size:26px;
   font-weight:bold;
-  margin-bottom:8px;
 }
 
-.tagline{
-  font-size:18px;
-  margin-bottom:22px;
-  opacity:0.95;
+.logo span{
+  color:#ff8a00;
 }
 
-/* SEARCH */
-
-.search-container{
-  max-width:600px;
-  margin:auto;
+nav{
+  display:flex;
+  gap:20px;
 }
 
-#searchBox{
-  width:100%;
-  padding:15px 20px;
-  border:none;
-  border-radius:30px;
-  font-size:16px;
-  outline:none;
+nav a{
+  color:white;
+  text-decoration:none;
 }
 
 /* HERO */
-
 .hero{
+  background:linear-gradient(135deg,#151515,#343434);
+  color:white;
   text-align:center;
-  background:white;
-  padding:35px 15px;
+  padding:70px 20px;
 }
 
-.hero h2{
-  margin:0 0 15px;
-  font-size:28px;
+.hero h1{
+  font-size:42px;
+  margin-bottom:15px;
 }
 
 .hero p{
-  margin:0;
-  color:#555;
+  color:#ddd;
+  font-size:18px;
+  margin-bottom:30px;
+}
+
+/* SEARCH */
+.search-box{
+  max-width:700px;
+  margin:auto;
+  background:white;
+  border-radius:50px;
+  display:flex;
+  padding:6px;
+}
+
+.search-box input{
+  flex:1;
+  border:none;
+  outline:none;
+  padding:16px 20px;
   font-size:17px;
+  border-radius:50px;
+}
+
+.search-box button{
+  border:none;
+  background:#ff8500;
+  color:white;
+  padding:15px 28px;
+  border-radius:40px;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+/* STORES */
+.section{
+  max-width:1200px;
+  margin:auto;
+  padding:55px 20px;
+}
+
+.title{
+  font-size:28px;
+  margin-bottom:25px;
+}
+
+.stores{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  gap:15px;
+}
+
+.store{
+  background:white;
+  padding:25px;
+  border-radius:16px;
+  text-align:center;
+  font-size:18px;
+  font-weight:bold;
+  box-shadow:0 4px 15px rgba(0,0,0,.08);
+  cursor:pointer;
+  transition:.3s;
+}
+
+.store:hover{
+  transform:translateY(-5px);
 }
 
 /* CATEGORIES */
-
 .categories{
-  text-align:center;
-  padding:25px 10px;
-}
-
-.categories button{
-  border:none;
-  background:#ff6b00;
-  color:white;
-  padding:12px 18px;
-  margin:5px;
-  border-radius:25px;
-  font-size:15px;
-  cursor:pointer;
-  transition:0.3s;
-}
-
-.categories button:hover{
-  background:#e85f00;
-  transform:scale(1.05);
-}
-
-/* PRODUCTS */
-
-.products{
-  max-width:1200px;
-  margin:auto;
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:22px;
-  padding:20px;
+  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:15px;
 }
 
-.product-card{
+.category{
+  background:white;
+  border-radius:15px;
+  padding:25px 15px;
+  text-align:center;
+  box-shadow:0 4px 15px rgba(0,0,0,.07);
+  cursor:pointer;
+}
+
+.category .icon{
+  font-size:35px;
+  margin-bottom:10px;
+}
+
+/* DEALS */
+.products{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:20px;
+}
+
+.product{
   background:white;
   border-radius:18px;
   overflow:hidden;
-  box-shadow:0 5px 18px rgba(0,0,0,0.12);
-  transition:0.3s;
-  text-align:center;
-  padding-bottom:18px;
+  box-shadow:0 5px 18px rgba(0,0,0,.08);
+  transition:.3s;
 }
 
-.product-card:hover{
-  transform:translateY(-7px);
+.product:hover{
+  transform:translateY(-6px);
 }
 
-.product-card img{
-  width:100%;
-  height:210px;
-  object-fit:cover;
+.product-img{
+  height:190px;
+  background:#eee;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:70px;
 }
 
-.product-card h3{
-  margin:18px 10px 8px;
-  font-size:21px;
+.product-info{
+  padding:18px;
+}
+
+.product h3{
+  margin-bottom:10px;
 }
 
 .price{
-  color:#d62828;
-  font-size:23px;
+  font-size:22px;
   font-weight:bold;
-  margin:10px;
+  color:#e53935;
 }
 
 .old-price{
   color:#888;
   text-decoration:line-through;
-  margin:5px;
+  margin-left:8px;
 }
 
 .discount{
-  color:#198754;
+  color:#16843a;
   font-weight:bold;
+  margin:10px 0;
 }
 
-/* BUTTONS */
-
-.buy-buttons{
-  display:flex;
-  gap:10px;
-  padding:10px 15px;
-}
-
-.amazon{
-  flex:1;
-  background:#ff9900;
-}
-
-.flipkart{
-  flex:1;
-  background:#2874f0;
-}
-
-.buy-buttons a{
+.buy{
+  display:block;
+  text-align:center;
+  background:#ff8500;
   color:white;
   text-decoration:none;
-  padding:12px 8px;
-  border-radius:8px;
-  font-size:14px;
-  font-weight:bold;
+  padding:12px;
+  border-radius:10px;
+  margin-top:15px;
 }
 
 /* FOOTER */
-
 footer{
-  background:#222;
+  background:#151515;
   color:white;
   text-align:center;
-  padding:30px 15px;
-  margin-top:30px;
+  padding:40px 20px;
+  margin-top:40px;
 }
 
-footer h2{
-  margin-top:0;
+footer p{
+  color:#bbb;
+  margin-top:10px;
 }
 
 /* MOBILE */
+@media(max-width:650px){
 
-@media(max-width:600px){
+header{
+  padding:15px 20px;
+}
 
-.logo{
+nav{
+  display:none;
+}
+
+.hero{
+  padding:55px 15px;
+}
+
+.hero h1{
   font-size:30px;
 }
 
-.hero h2{
-  font-size:24px;
-}
-
-.products{
-  grid-template-columns:1fr;
-  padding:15px;
-}
-
-.product-card img{
-  height:230px;
-}
-
-.buy-buttons{
+.search-box{
+  border-radius:15px;
   flex-direction:column;
+  background:transparent;
+  gap:10px;
+}
+
+.search-box input,
+.search-box button{
+  width:100%;
 }
 
 }
 
 </style>
-
 </head>
 
 <body>
 
-<!-- HEADER -->
-
 <header>
+  <div class="logo">🛍️ Sasta<span>Bazar</span></div>
 
-<div class="logo">🛍️ SastaBajar</div>
-
-<div class="tagline">
-भारत के बेहतरीन Online Shopping Deals
-</div>
-
-<div class="search-container">
-
-<input
-type="text"
-id="searchBox"
-placeholder="🔍 अपना Product खोजें..."
->
-
-</div>
-
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#stores">Stores</a>
+    <a href="#categories">Categories</a>
+    <a href="#deals">Deals</a>
+  </nav>
 </header>
 
+<section class="hero" id="home">
 
-<!-- HERO -->
+  <h1>भारत में सबसे अच्छे Deals खोजें 🔥</h1>
 
-<section class="hero">
+  <p>Amazon, Flipkart, Myntra और अन्य Stores के Deals एक जगह</p>
 
-<h2>🔥 आज के सबसे शानदार Deals!</h2>
-
-<p>
-Amazon और Flipkart के बेहतरीन Products और Offers एक ही जगह।
-</p>
-
-</section>
-
-
-<!-- CATEGORIES -->
-
-<section class="categories">
-
-<button onclick="filterProducts('all')">🔥 सभी Deals</button>
-
-<button onclick="filterProducts('electronics')">
-📱 Electronics
-</button>
-
-<button onclick="filterProducts('fashion')">
-👕 Fashion
-</button>
-
-<button onclick="filterProducts('home')">
-🏠 Home
-</button>
+  <div class="search-box">
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="🔍 कोई भी सामान खोजें... जैसे iPhone, Shoes, Laptop"
+    >
+    <button onclick="searchProduct()">Search 🔍</button>
+  </div>
 
 </section>
 
+<section class="section" id="stores">
 
-<!-- PRODUCTS -->
+<h2 class="title">🛒 Popular Stores</h2>
 
-<main class="products">
+<div class="stores">
+  <div class="store">🟠 Amazon</div>
+  <div class="store">🔵 Flipkart</div>
+  <div class="store">👕 Myntra</div>
+  <div class="store">✨ Tata CLiQ</div>
+</div>
 
+</section>
 
-<!-- PRODUCT 1 -->
+<section class="section" id="categories">
 
-<div class="product-card" data-category="electronics">
+<h2 class="title">📂 Shop by Category</h2>
 
-<img
-src="https://via.placeholder.com/500x350?text=Latest+Smartphone"
-alt="Latest Smartphone"
->
+<div class="categories">
 
-<h3>📱 Latest Smartphone</h3>
+<div class="category">
+<div class="icon">📱</div>
+Electronics
+</div>
 
-<div class="old-price">₹19,999</div>
+<div class="category">
+<div class="icon">👕</div>
+Fashion
+</div>
 
-<div class="price">₹14,999</div>
+<div class="category">
+<div class="icon">💻</div>
+Computers
+</div>
 
-<div class="discount">🔥 शानदार Deal</div>
+<div class="category">
+<div class="icon">🏠</div>
+Home & Kitchen
+</div>
 
-<div class="buy-buttons">
+<div class="category">
+<div class="icon">💄</div>
+Beauty
+</div>
 
-<a
-class="amazon"
-href="https://www.amazon.in/"
-target="_blank"
->
-Amazon
-</a>
-
-<a
-class="flipkart"
-href="https://www.flipkart.com/"
-target="_blank"
->
-Flipkart
-</a>
-
+<div class="category">
+<div class="icon">⌚</div>
+Accessories
 </div>
 
 </div>
 
+</section>
 
-<!-- PRODUCT 2 -->
+<section class="section" id="deals">
 
-<div class="product-card" data-category="electronics">
+<h2 class="title">🔥 Trending Deals</h2>
 
-<img
-src="https://via.placeholder.com/500x350?text=Wireless+Earbuds"
-alt="Wireless Earbuds"
->
+<div class="products">
 
-<h3>🎧 Wireless Earbuds</h3>
-
-<div class="old-price">₹2,999</div>
-
-<div class="price">₹1,499</div>
-
-<div class="discount">🔥 शानदार Offer</div>
-
-<div class="buy-buttons">
-
-<a
-class="amazon"
-href="https://www.amazon.in/"
-target="_blank"
->
-Amazon
+<div class="product" data-name="smartphone mobile phone">
+<div class="product-img">📱</div>
+<div class="product-info">
+<h3>Latest Smartphones</h3>
+<div class="price">Best Deals Available</div>
+<p class="discount">🔥 कई Stores पर Offers</p>
+<a class="buy" href="https://www.amazon.in/" target="_blank">
+Deals देखें
 </a>
+</div>
+</div>
 
-<a
-class="flipkart"
-href="https://www.flipkart.com/"
-target="_blank"
->
-Flipkart
+<div class="product" data-name="laptop computer">
+<div class="product-img">💻</div>
+<div class="product-info">
+<h3>Laptops & Computers</h3>
+<div class="price">Best Price खोजें</div>
+<p class="discount">⚡ नए Offers देखें</p>
+<a class="buy" href="https://www.flipkart.com/" target="_blank">
+Deals देखें
 </a>
+</div>
+</div>
 
+<div class="product" data-name="shoes fashion sneakers">
+<div class="product-img">👟</div>
+<div class="product-info">
+<h3>Fashion & Shoes</h3>
+<div class="price">Up to 70% OFF</div>
+<p class="discount">🔥 शानदार Fashion Deals</p>
+<a class="buy" href="https://www.myntra.com/" target="_blank">
+Deals देखें
+</a>
+</div>
+</div>
+
+<div class="product" data-name="home kitchen furniture">
+<div class="product-img">🏠</div>
+<div class="product-info">
+<h3>Home & Kitchen</h3>
+<div class="price">Best Home Deals</div>
+<p class="discount">💥 आज के Offers</p>
+<a class="buy" href="https://www.tatacliq.com/" target="_blank">
+Deals देखें
+</a>
+</div>
 </div>
 
 </div>
 
-
-<!-- PRODUCT 3 -->
-
-<div class="product-card" data-category="fashion">
-
-<img
-src="https://via.placeholder.com/500x350?text=Fashion+Collection"
-alt="Fashion Collection"
->
-
-<h3>👕 Fashion Collection</h3>
-
-<div class="old-price">₹1,999</div>
-
-<div class="price">₹999</div>
-
-<div class="discount">🔥 50% तक Discount</div>
-
-<div class="buy-buttons">
-
-<a
-class="amazon"
-href="https://www.amazon.in/"
-target="_blank"
->
-Amazon
-</a>
-
-<a
-class="flipkart"
-href="https://www.flipkart.com/"
-target="_blank"
->
-Flipkart
-</a>
-
-</div>
-
-</div>
-
-
-<!-- PRODUCT 4 -->
-
-<div class="product-card" data-category="home">
-
-<img
-src="https://via.placeholder.com/500x350?text=Home+Kitchen"
-alt="Home and Kitchen"
->
-
-<h3>🏠 Home & Kitchen</h3>
-
-<div class="old-price">₹999</div>
-
-<div class="price">₹499</div>
-
-<div class="discount">🔥 Best Price</div>
-
-<div class="buy-buttons">
-
-<a
-class="amazon"
-href="https://www.amazon.in/"
-target="_blank"
->
-Amazon
-</a>
-
-<a
-class="flipkart"
-href="https://www.flipkart.com/"
-target="_blank"
->
-Flipkart
-</a>
-
-</div>
-
-</div>
-
-
-<!-- PRODUCT 5 -->
-
-<div class="product-card" data-category="electronics">
-
-<img
-src="https://via.placeholder.com/500x350?text=Smartwatch"
-alt="Smartwatch"
->
-
-<h3>⌚ Smartwatch</h3>
-
-<div class="old-price">₹4,999</div>
-
-<div class="price">₹2,499</div>
-
-<div class="discount">🔥 Limited Deal</div>
-
-<div class="buy-buttons">
-
-<a
-class="amazon"
-href="https://www.amazon.in/"
-target="_blank"
->
-Amazon
-</a>
-
-<a
-class="flipkart"
-href="https://www.flipkart.com/"
-target="_blank"
->
-Flipkart
-</a>
-
-</div>
-
-</div>
-
-
-<!-- PRODUCT 6 -->
-
-<div class="product-card" data-category="fashion">
-
-<img
-src="https://via.placeholder.com/500x350?text=Shoes"
-alt="Shoes"
->
-
-<h3>👟 Stylish Shoes</h3>
-
-<div class="old-price">₹2,499</div>
-
-<div class="price">₹1,299</div>
-
-<div class="discount">🔥 शानदार बचत</div>
-
-<div class="buy-buttons">
-
-<a
-class="amazon"
-href="https://www.amazon.in/"
-target="_blank"
->
-Amazon
-</a>
-
-<a
-class="flipkart"
-href="https://www.flipkart.com/"
-target="_blank"
->
-Flipkart
-</a>
-
-</div>
-
-</div>
-
-
-</main>
-
-
-<!-- FOOTER -->
+</section>
 
 <footer>
-
-<h2>🛍️ SastaBajar</h2>
-
-<p>
-भारत के बेहतरीन Online Shopping Deals एक जगह।
-</p>
-
-<p>
-© 2026 SastaBajar | All Rights Reserved
-</p>
-
+<h2>🛍️ SastaBazar</h2>
+<p>Smart Shopping • Better Deals • More Savings</p>
+<p>© 2026 SastaBazar. All Rights Reserved.</p>
 </footer>
-
-
-<!-- JAVASCRIPT -->
 
 <script>
 
-/* CATEGORY FILTER */
+function searchProduct(){
 
-function filterProducts(category){
+const input=document
+.getElementById("searchInput")
+.value
+.toLowerCase()
+.trim();
 
-const products=document.querySelectorAll('.product-card');
+const products=document.querySelectorAll(".product");
+
+if(input===""){
+alert("कृपया कोई Product खोजें");
+return;
+}
+
+let found=false;
 
 products.forEach(product=>{
 
-if(
-category==='all'
-||
-product.dataset.category===category
-){
+const name=product.dataset.name;
 
-product.style.display='block';
-
-}
-
-else{
-
-product.style.display='none';
-
+if(name.includes(input)){
+product.style.display="block";
+found=true;
+}else{
+product.style.display="none";
 }
 
 });
-
-}
-
-
-/* SEARCH */
 
 document
-.getElementById('searchBox')
-.addEventListener('keyup',function(){
-
-let search=this.value.toLowerCase();
-
-document
-.querySelectorAll('.product-card')
-.forEach(product=>{
-
-let text=product.innerText.toLowerCase();
-
-if(text.includes(search)){
-
-product.style.display='block';
-
-}
-
-else{
-
-product.style.display='none';
-
-}
-
+.getElementById("deals")
+.scrollIntoView({
+behavior:"smooth"
 });
 
-});
+if(!found){
+alert("इस Product का Live Search API अभी जोड़ना बाकी है।");
+}
+
+}
 
 </script>
-
 
 </body>
 </html>
